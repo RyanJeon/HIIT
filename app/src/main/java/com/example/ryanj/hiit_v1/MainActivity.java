@@ -17,7 +17,7 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button stop, start, lap; //btton objects
+    Button stop, start, lap; //button objects
     int set = 0; //will count sets of running
 
     TextView txt, laptxt; //counter text
