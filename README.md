@@ -8,10 +8,10 @@ Current Feature:
 - Counting Laps (Set) of your workout
 
 Bugs:
--Buggy Time alignment
--Reset not working when pressed while the timer is running
+- Buggy Time alignment
+- Reset not working when pressed while the timer is running
 
 
 Future Features:
--Music Implementation
--Parrot Dancing
+- Music Implementation
+- Parrot Dancing
