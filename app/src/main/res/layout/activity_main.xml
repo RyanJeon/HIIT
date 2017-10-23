@@ -16,10 +16,10 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/Lap"
+        android:id="@+id/Reset"
         android:layout_width="102dp"
         android:layout_height="34dp"
-        android:text="Lap"
+        android:text="Reset"
         android:textSize="12sp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="111dp"
@@ -64,6 +64,7 @@
         android:textSize="36sp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
+
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
