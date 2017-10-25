@@ -18,5 +18,5 @@ Future Features:
 
 Patch Notes:
 10/25/2017 1:00 PM
--Fixed time allignment
--Software takes up less memory
+- Fixed time allignment
+- Software takes up less memory
