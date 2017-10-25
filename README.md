@@ -14,6 +14,7 @@ Bugs:
 Future Features:
 - Music Implementation
 - Parrot Dancing Depending on the speed of your workout
+- One button feature 
 
 
 Patch Notes:
