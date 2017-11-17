@@ -17,7 +17,7 @@ import com.example.ryanj.hiit_v1.Timez;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button stop, start, reset, taptap; //button objects
+    Button taptap; //button objects
     int set = 0; //will count sets of running
 
     TextView txt, laptxt; //counter text
@@ -61,16 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         }.start();
 
-        Toast.makeText(getApplicationContext(), "Testing is successful", Toast.LENGTH_SHORT).show();
-
 
     }
 
 
     public void startTimer(){ //time starting function
-        Toast.makeText(getApplicationContext(), String.valueOf(store), Toast.LENGTH_SHORT).show(); //execute message
         timeM(); //start the timer
-
     };
 
 
@@ -79,63 +75,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txt = (TextView) findViewById(R.id.textView); //finds the counter text
         laptxt = (TextView) findViewById(R.id.laptxt); //finds the lap text
 
-        stop = (Button) findViewById(R.id.Stop);
-        stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(running) {
-
-                    Toast.makeText(getApplicationContext(), "Pausing..", Toast.LENGTH_SHORT).show();
-                    timer.cancel(); //cancel s timer
-                    txt.setText(String.valueOf(store / 1000));
-                    store_time.setCounter_time(store); //set counter time to store
-                }
-                else{
-
-                }
-
-            }
-        });
-
-
-        start = (Button) findViewById(R.id.Start); //temp start button
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), String.valueOf(store), Toast.LENGTH_SHORT).show();
-                timeM(); // start the timer
-            }
-        });
-
-        reset = (Button) findViewById(R.id.Reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(getApplicationContext(), "Resetting the counter..", Toast.LENGTH_SHORT).show();
-                store = 0; //reset the stored time
-                store_time.setCounter_time(60000); //reset the counter time to 60
-                txt.setText(String.valueOf(store)); //reset the value of counter
-
-
-            }
-        });
-
-
-
-
 
 
         taptap = (Button) findViewById(R.id.Taptap);
-
-
         taptap.setOnClickListener(new View.OnClickListener(){
             int clicks = 0; //number of clicks
             @Override
@@ -179,8 +126,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-
-
         });
 
         //path needed: timer keeps running when resetted.
@@ -188,7 +133,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) { //long click is reset
                 Toast.makeText(getApplicationContext(), "Resetting the counter..", Toast.LENGTH_SHORT).show();
-                store = 0; //reset the stored time
+                if(running){ //if the timer was running
+                    timer.cancel(); //cancel the timer
+                }
+
+                store = 60; //reset the stored time
                 store_time.setCounter_time(60000); //reset the counter time to 60
                 txt.setText(String.valueOf(store)); //reset the value of counter
                 running = false; //tells the program that timer is stopped
