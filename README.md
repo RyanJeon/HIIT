@@ -8,7 +8,6 @@ Current Feature:
 - Counting Laps (Set) of your workout
 
 Bugs:
-- Reset not working when pressed while the timer is running
 
 
 Future Features:
