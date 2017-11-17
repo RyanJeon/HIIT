@@ -135,20 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
         taptap = (Button) findViewById(R.id.Taptap);
 
-        taptap.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) { //long click is reset
-                Toast.makeText(getApplicationContext(), "Resetting the counter..", Toast.LENGTH_SHORT).show();
-                store = 0; //reset the stored time
-                store_time.setCounter_time(60000); //reset the counter time to 60
-                txt.setText(String.valueOf(store)); //reset the value of counter
-                running = false; //tells the program that timer is stopped
-                return false;
-            }
-
-
-
-        });
 
         taptap.setOnClickListener(new View.OnClickListener(){
             int clicks = 0; //number of clicks
@@ -168,25 +154,46 @@ public class MainActivity extends AppCompatActivity {
                 if (clicks < 3) { //if clicked once
                     //Single click
 
-                    if(!running && reseti) { //if not running
+                    if(!running && !reseti) { //if not running
                         Toast.makeText(getApplicationContext(), "Single Click", Toast.LENGTH_SHORT).show();
                         startTimer(); //start the timer
                     }
-                    else{
+                    else if(running && !reseti){ //if the app is running
                         Toast.makeText(getApplicationContext(), "Pausing..", Toast.LENGTH_SHORT).show();
                         timer.cancel(); //cancel s timer
                         txt.setText(String.valueOf(store / 1000));
                         store_time.setCounter_time(store); //set counter time to store
+                        running = false;
+                    }
+                    else if(reseti){ //if the timer was on the reset mode
+                        reseti = false; //tells the program that the timer is not reset
                     }
 
 
                     handler.postDelayed(r, 250); //delay component
-                } else if (clicks == 100) { //if clicked twice
+                } else if (clicks == 100) { //if clicked twice //ignore for now
                     //Double click
                     clicks = 0; //reset the click counter
 
                 }
 
+            }
+
+
+
+        });
+
+        //path needed: timer keeps running when resetted.
+        taptap.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) { //long click is reset
+                Toast.makeText(getApplicationContext(), "Resetting the counter..", Toast.LENGTH_SHORT).show();
+                store = 0; //reset the stored time
+                store_time.setCounter_time(60000); //reset the counter time to 60
+                txt.setText(String.valueOf(store)); //reset the value of counter
+                running = false; //tells the program that timer is stopped
+                reseti = true; //tells the program that timer is resetted
+                return false;
             }
 
 
